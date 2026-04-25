@@ -1,0 +1,17 @@
+[project]
+name = "qwen-mlx"
+version = "0.2.0"
+description = "在 Mac 上透過 OpenAI 相容 API 使用 MLX 視覺語言模型"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mlx-vlm>=0.4.4",
+    "torch>=2.11.0",
+    "torchvision>=0.26.0",
+    "uvicorn>=0.34.0",
+    "fastapi>=0.115.0",
+    "openai>=1.70.0",
+]
+
+[project.scripts]
+qwen-mlx-server = "server:main"
