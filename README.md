@@ -30,7 +30,7 @@ uv sync
 ## 🚀 快速啟動
 
 ```bash
-# 使用預設模型（Qwen2.5-VL-7B-Instruct-4bit）啟動
+# 使用預設模型（gemma-4-e4b-it-4bit）啟動
 uv run python server.py
 
 # 指定模型
@@ -72,7 +72,7 @@ client = OpenAI(
     api_key="mlx-vlm"  # 任意值即可
 )
 
-# 純文字對話
+# 文字對話
 response = client.chat.completions.create(
     model="mlx-community/Qwen2.5-VL-7B-Instruct-4bit",
     messages=[
@@ -88,7 +88,7 @@ print(response.choices[0].message.content)
 
 ```python
 response = client.chat.completions.create(
-    model="mlx-community/Qwen2.5-VL-7B-Instruct-4bit",
+    model="mlx-community/gemma-4-e4b-it-4bit",
     messages=[
         {
             "role": "user",
@@ -110,7 +110,7 @@ print(response.choices[0].message.content)
 
 ```python
 stream = client.chat.completions.create(
-    model="mlx-community/Qwen2.5-VL-7B-Instruct-4bit",
+    model="mlx-community/gemma-4-e4b-it-4bit",
     messages=[{"role": "user", "content": "寫一首短詩"}],
     stream=True,
     max_tokens=200,
@@ -128,7 +128,7 @@ for chunk in stream:
 curl -X POST "http://localhost:8080/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "mlx-community/Qwen2.5-VL-7B-Instruct-4bit",
+    "model": "mlx-community/gemma-4-e4b-it-4bit",
     "messages": [{"role": "user", "content": "你好"}],
     "max_tokens": 100
   }'
@@ -159,11 +159,11 @@ uv run python test_api.py --skip-image
 |------|------|--------|
 | `--host` | 監聽位址 | `0.0.0.0` |
 | `--port` | 監聽埠號 | `8080` |
-| `--model` | 模型路徑/HF ID | `mlx-community/Qwen2.5-VL-7B-Instruct-4bit` |
+| `--model` | 模型路徑/HF ID | `mlx-community/gemma-4-e4b-it-4bit` |
 | `--adapter-path` | Adapter 權重路徑 | - |
 | `--trust-remote-code` | 信任遠端程式碼 | `false` |
-| `--kv-bits` | KV Cache 量化位元 | - |
-| `--kv-quant-scheme` | 量化方案 | `uniform` |
+| `--kv-bits` | KV Cache 量化位元 | `4.0` |
+| `--kv-quant-scheme` | 量化方案 | `turboquant` |
 | `--draft-model` | DFlash drafter 路徑 | - |
 | `--vision-cache-size` | Vision Cache 大小 | `20` |
 | `--log-level` | 日誌等級 | `INFO` |
