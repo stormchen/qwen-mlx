@@ -134,8 +134,16 @@ def main():
     results = []
     results.append(("列出模型", test_models(client)))
 
-    # 取得要測試的模型名稱
+    # 取得要測試的模型名稱（優先從 /health 端點取得當前載入的模型）
     model = args.model
+    if not model:
+        try:
+            import httpx
+            base = args.base_url.rstrip("/v1").rstrip("/")
+            health = httpx.get(f"{base}/health", timeout=5).json()
+            model = health.get("loaded_model")
+        except Exception:
+            pass
     if not model:
         try:
             models = client.models.list()

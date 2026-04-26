@@ -20,7 +20,7 @@ class ServerConfig:
 
     # === 模型設定 ===
     # 預設載入的模型（HuggingFace repo 或本機路徑）
-    model: str = "mlx-community/Qwen2.5-VL-7B-Instruct-4bit"
+    model: str = "mlx-community/gemma-4-e4b-it-4bit"
     # Adapter 權重路徑（可選）
     adapter_path: Optional[str] = None
     # 是否信任遠端程式碼
@@ -28,9 +28,10 @@ class ServerConfig:
 
     # === 推論效能設定 ===
     # KV Cache 量化位元數（例如 8, 4, 3.5）
-    kv_bits: Optional[float] = None
-    # KV Cache 量化方案（uniform 或 turboquant）
-    kv_quant_scheme: str = "uniform"
+    # 對於 M4 16GB，設定 4.0 可以大幅節省長對話時的記憶體
+    kv_bits: Optional[float] = 4.0
+    # KV Cache 量化方案（使用 turboquant 在 M4 上效能最佳）
+    kv_quant_scheme: str = "turboquant"
     # KV Cache 量化 group size
     kv_group_size: int = 64
     # 最大 KV Cache 大小（token 數）

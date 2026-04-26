@@ -67,9 +67,9 @@ def main():
     for k, v in cfg.to_env_vars().items():
         os.environ[k] = v
     if cfg.model:
-        os.environ["MLX_VLM_PRELOAD_MODEL"] = cfg.model
+        os.environ["PRELOAD_MODEL"] = cfg.model
     if cfg.adapter_path:
-        os.environ["MLX_VLM_PRELOAD_ADAPTER"] = cfg.adapter_path
+        os.environ["PRELOAD_ADAPTER"] = cfg.adapter_path
 
     try:
         from mlx_vlm.server import app
