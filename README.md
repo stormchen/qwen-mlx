@@ -167,6 +167,8 @@ uv run python test_api.py --skip-image
 | `--draft-model` | DFlash drafter 路徑 | - |
 | `--vision-cache-size` | Vision Cache 大小 | `20` |
 | `--log-level` | 日誌等級 | `INFO` |
+| `--ssl-certfile` | SSL 憑證路徑 | - |
+| `--ssl-keyfile` | SSL 私鑰路徑 | - |
 
 ### 環境變數
 

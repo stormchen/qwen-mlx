@@ -127,7 +127,16 @@ def main():
     )
     args = parser.parse_args()
 
-    client = OpenAI(base_url=args.base_url, api_key="mlx-vlm")
+    # 初始化 OpenAI 客戶端
+    # 針對本地自簽署憑證，我們建立一個不驗證 SSL 的 httpx 客戶端
+    import httpx
+    http_client = httpx.Client(verify=False) if args.base_url.startswith("https") else None
+    
+    client = OpenAI(
+        base_url=args.base_url,
+        api_key="mlx-vlm",
+        http_client=http_client
+    )
     print(f"🔗 連線至: {args.base_url}")
 
     # 取得模型列表
@@ -140,7 +149,9 @@ def main():
         try:
             import httpx
             base = args.base_url.rstrip("/v1").rstrip("/")
-            health = httpx.get(f"{base}/health", timeout=5).json()
+            # 針對本地測試忽略 SSL 驗證
+            h_resp = httpx.get(f"{base}/health", timeout=5, verify=False)
+            health = h_resp.json()
             model = health.get("loaded_model")
         except Exception:
             pass

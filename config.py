@@ -18,6 +18,14 @@ class ServerConfig:
     host: str = "0.0.0.0"
     port: int = 8080
 
+    # === SSL 設定 (支援 https) ===
+    ssl_certfile: Optional[str] = None
+    ssl_keyfile: Optional[str] = None
+
+    # === SSL 設定 (支援 https) ===
+    ssl_certfile: Optional[str] = None
+    ssl_keyfile: Optional[str] = None
+
     # === 模型設定 ===
     # 預設載入的模型（HuggingFace repo 或本機路徑）
     model: str = "mlx-community/gemma-4-e4b-it-4bit"

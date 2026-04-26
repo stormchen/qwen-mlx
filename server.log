@@ -1,0 +1,458 @@
+INFO:     Started server process [17946]
+INFO:     Waiting for application startup.
+2026-04-26 20:55:47,108 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Qwen2.5-VL-7B-Instruct-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/Qwen2.5-VL-7B-Instruct-4bit
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/Qwen2.5-VL-7B-Instruct-4bit
+Loading model from: mlx-community/Qwen2.5-VL-7B-Instruct-4bit
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 30084.67it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+Model and processor loaded successfully.
+INFO:     127.0.0.1:57817 - "POST /v1/v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57818 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+2026-04-26 21:15:59,580 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+New model request, clearing existing cache...
+Unloading model: mlx-community/Qwen2.5-VL-7B-Instruct-4bit, Adapter: None
+Model unloaded and cache cleared.
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 16256.99it/s]
+Model and processor loaded successfully.
+INFO:     127.0.0.1:57867 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Prefill:   0%|          | 0/22912 [00:00<?, ?tok/s]Prefill:   9%|▉         | 2048/22912 [00:04<00:43, 479.40tok/s]Prefill:  18%|█▊        | 4096/22912 [00:07<00:34, 540.01tok/s]Prefill:  27%|██▋       | 6144/22912 [00:11<00:30, 558.37tok/s]Prefill:  36%|███▌      | 8192/22912 [00:14<00:26, 562.99tok/s]Prefill:  45%|████▍     | 10240/22912 [00:18<00:22, 561.77tok/s]Prefill:  54%|█████▎    | 12288/22912 [00:22<00:19, 556.79tok/s]Prefill:  63%|██████▎   | 14336/22912 [00:26<00:15, 550.13tok/s]Prefill:  72%|███████▏  | 16384/22912 [00:29<00:12, 542.25tok/s]Prefill:  80%|████████  | 18432/22912 [00:33<00:08, 533.95tok/s]Prefill:  89%|████████▉ | 20480/22912 [00:37<00:04, 525.24tok/s]Prefill:  98%|█████████▊| 22528/22912 [00:42<00:00, 516.92tok/s]Prefill: 100%|█████████▉| 22911/22912 [00:42<00:00, 516.34tok/s]Prefill: 100%|█████████▉| 22911/22912 [00:42<00:00, 535.16tok/s]
+Stream finished, cleared cache.
+INFO:     127.0.0.1:57907 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57908 - "GET /v1/v1/models?limit=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58056 - "GET /v1/v1/models?limit=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58057 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58081 - "POST /v1/v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58082 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58099 - "POST /v1/v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58100 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58199 - "GET /v1/v1/models?limit=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58200 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58222 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58223 - "GET /v1/v1/models?limit=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58242 - "GET /v1/models?limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58243 - "GET /v1/models?limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58469 - "HEAD / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58470 - "HEAD / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58471 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58471 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58472 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58472 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58510 - "GET /v1/models?limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58511 - "GET /v1/models?limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58526 - "HEAD / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58525 - "HEAD / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58528 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58528 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58529 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58529 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58582 - "POST /v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58581 - "GET /v1/models?limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58594 - "HEAD / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58593 - "HEAD / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58596 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58596 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58597 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58597 - "POST /v1/messages?beta=true HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58619 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58620 - "POST /v1/v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58668 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58670 - "GET /health HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Generation finished, cleared cache.
+INFO:     127.0.0.1:58668 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:58668 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Stream finished, cleared cache.
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Generation finished, cleared cache.
+INFO:     127.0.0.1:58675 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58699 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58700 - "POST /v1/v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58722 - "POST /v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58721 - "GET /v1/models?limit=1000 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [17946]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [20281]
+INFO:     Waiting for application startup.
+2026-04-26 21:42:33,917 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Qwen2.5-VL-7B-Instruct-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/Qwen2.5-VL-7B-Instruct-4bit
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/Qwen2.5-VL-7B-Instruct-4bit
+Loading model from: mlx-community/Qwen2.5-VL-7B-Instruct-4bit
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 16572.82it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8080 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [20281]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [20527]
+INFO:     Waiting for application startup.
+2026-04-26 21:53:22,982 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/gemma-4-e4b-it-4bit
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 13628.93it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8080 (Press CTRL+C to quit)
+Model and processor loaded successfully.
+INFO:     127.0.0.1:59372 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59374 - "GET /health HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Generation finished, cleared cache.
+INFO:     127.0.0.1:59372 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:59372 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Stream finished, cleared cache.
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Generation finished, cleared cache.
+INFO:     127.0.0.1:59376 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [20527]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [20839]
+INFO:     Waiting for application startup.
+2026-04-26 21:59:04,326 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/gemma-4-e4b-it-4bit
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 12802.15it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+Model and processor loaded successfully.
+INFO:     127.0.0.1:59613 - "POST /v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59614 - "GET /v1/models?limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59816 - "POST /v1/v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59817 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [20839]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [21396]
+INFO:     Waiting for application startup.
+2026-04-26 22:05:08,977 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/gemma-4-e4b-it-4bit
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 7865.55it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+Model and processor loaded successfully.
+INFO:     127.0.0.1:59897 - "POST /v1/v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59898 - "GET /v1/v1/models?limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59976 - "POST /v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59977 - "GET /v1/models?limit=1000 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [21396]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [21498]
+INFO:     Waiting for application startup.
+2026-04-26 22:08:02,764 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/gemma-4-e4b-it-4bit
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 12925.44it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+Model and processor loaded successfully.
+INFO:     127.0.0.1:60021 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:60064 - "POST /v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60065 - "GET /v1/models?limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60139 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60141 - "GET /health HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Generation finished, cleared cache.
+INFO:     127.0.0.1:60139 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60139 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Stream finished, cleared cache.
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Generation finished, cleared cache.
+INFO:     127.0.0.1:60145 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60152 - "POST /v1/messages HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60153 - "GET /v1/models?limit=1000 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [21498]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [21753]
+INFO:     Waiting for application startup.
+2026-04-26 22:14:36,535 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/gemma-4-e4b-it-4bit
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 8422.30it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+Model and processor loaded successfully.
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60285 - "POST /v1/messages HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60466 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60467 - "GET /v1/models?limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60479 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:60480 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60481 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+Prefill:   0%|          | 0/11607 [00:00<?, ?tok/s]Prefill:  18%|█▊        | 2048/11607 [00:04<00:19, 480.14tok/s]Prefill:  35%|███▌      | 4096/11607 [00:07<00:13, 542.55tok/s]Prefill:  53%|█████▎    | 6144/11607 [00:11<00:09, 561.85tok/s]Prefill:  71%|███████   | 8192/11607 [00:14<00:06, 567.39tok/s]Prefill:  88%|████████▊ | 10240/11607 [00:18<00:02, 566.54tok/s]Prefill: 100%|█████████▉| 11606/11607 [00:20<00:00, 565.79tok/s]Prefill: 100%|█████████▉| 11606/11607 [00:20<00:00, 558.17tok/s]
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Prefill:   0%|          | 0/11603 [00:00<?, ?tok/s]Prefill:  18%|█▊        | 2048/11603 [00:03<00:15, 620.28tok/s]Prefill:  35%|███▌      | 4096/11603 [00:06<00:12, 607.38tok/s]Prefill:  53%|█████▎    | 6144/11603 [00:10<00:09, 598.75tok/s]Prefill:  71%|███████   | 8192/11603 [00:13<00:05, 589.54tok/s]Prefill:  88%|████████▊ | 10240/11603 [00:17<00:02, 580.33tok/s]Prefill: 100%|█████████▉| 11602/11603 [00:19<00:00, 575.38tok/s]Prefill: 100%|█████████▉| 11602/11603 [00:19<00:00, 585.65tok/s]
+INFO:     127.0.0.1:60481 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60482 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+Prefill:   0%|          | 0/31460 [00:00<?, ?tok/s]Prefill:   7%|▋         | 2048/31460 [00:03<00:47, 616.57tok/s]Prefill:  13%|█▎        | 4096/31460 [00:06<00:45, 606.23tok/s]Prefill:  20%|█▉        | 6144/31460 [00:10<00:42, 597.56tok/s]Prefill:  26%|██▌       | 8192/31460 [00:13<00:39, 586.64tok/s]Prefill:  33%|███▎      | 10240/31460 [00:17<00:36, 578.30tok/s]Prefill:  39%|███▉      | 12288/31460 [00:21<00:33, 570.01tok/s]Prefill:  46%|████▌     | 14336/31460 [00:24<00:30, 560.71tok/s]Prefill:  52%|█████▏    | 16384/31460 [00:28<00:27, 550.58tok/s]Prefill:  59%|█████▊    | 18432/31460 [00:32<00:24, 541.56tok/s]Prefill:  65%|██████▌   | 20480/31460 [00:36<00:20, 532.35tok/s]Prefill:  72%|███████▏  | 22528/31460 [00:40<00:17, 522.45tok/s]Prefill:  78%|███████▊  | 24576/31460 [00:44<00:13, 512.11tok/s]Prefill:  85%|████████▍ | 26624/31460 [00:49<00:09, 502.97tok/s]Prefill:  91%|█████████ | 28672/31460 [00:53<00:05, 494.09tok/s]Prefill:  98%|█████████▊| 30720/31460 [00:57<00:01, 485.21tok/s]Prefill: 100%|█████████▉| 31459/31460 [00:59<00:00, 482.15tok/s]Prefill: 100%|█████████▉| 31459/31460 [00:59<00:00, 528.72tok/s]
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Prefill:   0%|          | 0/31460 [00:00<?, ?tok/s]Prefill:   7%|▋         | 2048/31460 [00:03<00:47, 618.40tok/s]Prefill:  13%|█▎        | 4096/31460 [00:06<00:45, 606.92tok/s]Prefill:  20%|█▉        | 6144/31460 [00:10<00:42, 597.53tok/s]Prefill:  26%|██▌       | 8192/31460 [00:13<00:39, 588.60tok/s]Prefill:  33%|███▎      | 10240/31460 [00:17<00:36, 580.00tok/s]Prefill:  39%|███▉      | 12288/31460 [00:21<00:33, 571.10tok/s]Prefill:  46%|████▌     | 14336/31460 [00:24<00:30, 562.00tok/s]Prefill:  52%|█████▏    | 16384/31460 [00:28<00:27, 551.96tok/s]Prefill:  59%|█████▊    | 18432/31460 [00:32<00:24, 541.38tok/s]Prefill:  65%|██████▌   | 20480/31460 [00:36<00:20, 533.24tok/s]Prefill:  72%|███████▏  | 22528/31460 [00:40<00:17, 525.09tok/s]Prefill:  78%|███████▊  | 24576/31460 [00:44<00:13, 516.93tok/s]Prefill:  85%|████████▍ | 26624/31460 [00:48<00:09, 509.14tok/s]Prefill:  91%|█████████ | 28672/31460 [00:53<00:05, 500.96tok/s]Prefill:  98%|█████████▊| 30720/31460 [00:57<00:01, 491.04tok/s]Prefill: 100%|█████████▉| 31459/31460 [00:59<00:00, 485.08tok/s]Prefill: 100%|█████████▉| 31459/31460 [00:59<00:00, 531.67tok/s]
+INFO:     127.0.0.1:60482 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60579 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60581 - "GET /health HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Generation finished, cleared cache.
+INFO:     127.0.0.1:60579 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60579 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Stream finished, cleared cache.
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Generation finished, cleared cache.
+INFO:     127.0.0.1:60583 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60612 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60613 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+Prefill:   0%|          | 0/31492 [00:00<?, ?tok/s]Prefill:   7%|▋         | 2048/31492 [00:05<01:12, 406.74tok/s]Prefill:  13%|█▎        | 4096/31492 [00:08<00:54, 501.29tok/s]Prefill:  20%|█▉        | 6144/31492 [00:11<00:46, 540.15tok/s]Prefill:  26%|██▌       | 8192/31492 [00:15<00:41, 556.24tok/s]Prefill:  33%|███▎      | 10240/31492 [00:18<00:37, 561.80tok/s]Prefill:  39%|███▉      | 12288/31492 [00:22<00:34, 562.03tok/s]Prefill:  46%|████▌     | 14336/31492 [00:26<00:30, 558.60tok/s]Prefill:  52%|█████▏    | 16384/31492 [00:30<00:27, 552.51tok/s]Prefill:  59%|█████▊    | 18432/31492 [00:33<00:23, 546.17tok/s]Prefill:  65%|██████▌   | 20480/31492 [00:37<00:20, 538.78tok/s]Prefill:  72%|███████▏  | 22528/31492 [00:41<00:16, 530.74tok/s]Prefill:  78%|███████▊  | 24576/31492 [00:45<00:13, 522.22tok/s]Prefill:  85%|████████▍ | 26624/31492 [00:50<00:09, 513.45tok/s]Prefill:  91%|█████████ | 28672/31492 [00:54<00:05, 503.30tok/s]Prefill:  98%|█████████▊| 30720/31492 [00:58<00:01, 495.30tok/s]Prefill: 100%|█████████▉| 31491/31492 [01:00<00:00, 491.18tok/s]Prefill: 100%|█████████▉| 31491/31492 [01:00<00:00, 522.32tok/s]
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Prefill:   0%|          | 0/31490 [00:00<?, ?tok/s]Prefill:   7%|▋         | 2048/31490 [00:03<00:47, 621.44tok/s]Prefill:  13%|█▎        | 4096/31490 [00:06<00:44, 612.83tok/s]Prefill:  20%|█▉        | 6144/31490 [00:10<00:41, 605.00tok/s]Prefill:  26%|██▌       | 8192/31490 [00:13<00:39, 596.71tok/s]Prefill:  33%|███▎      | 10240/31490 [00:17<00:36, 586.60tok/s]Prefill:  39%|███▉      | 12288/31490 [00:20<00:33, 577.35tok/s]Prefill:  46%|████▌     | 14336/31490 [00:24<00:30, 566.65tok/s]Prefill:  52%|█████▏    | 16384/31490 [00:28<00:27, 555.79tok/s]Prefill:  59%|█████▊    | 18432/31490 [00:32<00:23, 546.01tok/s]Prefill:  65%|██████▌   | 20480/31490 [00:36<00:20, 535.93tok/s]Prefill:  72%|███████▏  | 22528/31490 [00:40<00:17, 524.55tok/s]Prefill:  78%|███████▊  | 24576/31490 [00:44<00:13, 509.93tok/s]Prefill:  85%|████████▍ | 26624/31490 [00:49<00:09, 498.32tok/s]Prefill:  91%|█████████ | 28672/31490 [00:53<00:05, 487.32tok/s]Prefill:  98%|█████████▊| 30720/31490 [00:57<00:01, 477.85tok/s]Prefill: 100%|█████████▉| 31489/31490 [00:59<00:00, 463.06tok/s]Prefill: 100%|█████████▉| 31489/31490 [00:59<00:00, 525.77tok/s]
+INFO:     127.0.0.1:60613 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+INFO:      - "HEAD / HTTP/1.1" 405 Method Not Allowed
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60677 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+Prefill:   0%|          | 0/11605 [00:00<?, ?tok/s]Prefill:  18%|█▊        | 2048/11605 [00:03<00:15, 623.02tok/s]Prefill:  35%|███▌      | 4096/11605 [00:06<00:12, 603.58tok/s]Prefill:  53%|█████▎    | 6144/11605 [00:10<00:09, 591.67tok/s]Prefill:  71%|███████   | 8192/11605 [00:13<00:05, 582.22tok/s]Prefill:  88%|████████▊ | 10240/11605 [00:17<00:02, 572.61tok/s]Prefill: 100%|█████████▉| 11604/11605 [00:20<00:00, 568.05tok/s]Prefill: 100%|█████████▉| 11604/11605 [00:20<00:00, 579.07tok/s]
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Prefill:   0%|          | 0/11607 [00:00<?, ?tok/s]Prefill:  18%|█▊        | 2048/11607 [00:03<00:15, 619.90tok/s]Prefill:  35%|███▌      | 4096/11607 [00:06<00:12, 601.85tok/s]Prefill:  53%|█████▎    | 6144/11607 [00:10<00:09, 590.93tok/s]Prefill:  71%|███████   | 8192/11607 [00:13<00:05, 581.18tok/s]Prefill:  88%|████████▊ | 10240/11607 [00:17<00:02, 572.34tok/s]Prefill: 100%|█████████▉| 11606/11607 [00:20<00:00, 567.66tok/s]Prefill: 100%|█████████▉| 11606/11607 [00:20<00:00, 578.33tok/s]
+INFO:     127.0.0.1:60677 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60710 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60711 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+Prefill:   0%|          | 0/31633 [00:00<?, ?tok/s]Prefill:   6%|▋         | 2048/31633 [00:03<00:50, 580.79tok/s]Prefill:  13%|█▎        | 4096/31633 [00:06<00:46, 590.69tok/s]Prefill:  19%|█▉        | 6144/31633 [00:10<00:43, 591.07tok/s]Prefill:  26%|██▌       | 8192/31633 [00:13<00:39, 587.73tok/s]Prefill:  32%|███▏      | 10240/31633 [00:17<00:36, 582.16tok/s]Prefill:  39%|███▉      | 12288/31633 [00:21<00:33, 574.02tok/s]Prefill:  45%|████▌     | 14336/31633 [00:24<00:30, 565.42tok/s]Prefill:  52%|█████▏    | 16384/31633 [00:28<00:27, 557.09tok/s]Prefill:  58%|█████▊    | 18432/31633 [00:32<00:24, 548.28tok/s]Prefill:  65%|██████▍   | 20480/31633 [00:36<00:20, 538.01tok/s]Prefill:  71%|███████   | 22528/31633 [00:40<00:17, 527.17tok/s]Prefill:  78%|███████▊  | 24576/31633 [00:44<00:13, 516.02tok/s]Prefill:  84%|████████▍ | 26624/31633 [00:48<00:09, 505.72tok/s]Prefill:  91%|█████████ | 28672/31633 [00:53<00:05, 495.82tok/s]Prefill:  97%|█████████▋| 30720/31633 [00:57<00:01, 478.52tok/s]Prefill: 100%|█████████▉| 31632/31633 [00:59<00:00, 472.33tok/s]Prefill: 100%|█████████▉| 31632/31633 [00:59<00:00, 527.26tok/s]
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+Prefill:   0%|          | 0/31633 [00:00<?, ?tok/s]Prefill:   6%|▋         | 2048/31633 [00:03<00:47, 618.11tok/s]Prefill:  13%|█▎        | 4096/31633 [00:06<00:45, 606.43tok/s]Prefill:  19%|█▉        | 6144/31633 [00:10<00:42, 595.27tok/s]Prefill:  26%|██▌       | 8192/31633 [00:13<00:40, 583.76tok/s]Prefill:  32%|███▏      | 10240/31633 [00:17<00:37, 572.25tok/s]Prefill:  39%|███▉      | 12288/31633 [00:21<00:34, 561.06tok/s]Prefill:  45%|████▌     | 14336/31633 [00:25<00:31, 550.21tok/s]Prefill:  52%|█████▏    | 16384/31633 [00:29<00:28, 538.93tok/s]Prefill:  58%|█████▊    | 18432/31633 [00:33<00:25, 527.84tok/s]Prefill:  65%|██████▍   | 20480/31633 [00:37<00:21, 516.29tok/s]Prefill:  71%|███████   | 22528/31633 [00:41<00:18, 505.14tok/s]Prefill:  78%|███████▊  | 24576/31633 [00:45<00:14, 496.18tok/s]Prefill:  84%|████████▍ | 26624/31633 [00:50<00:10, 483.96tok/s]Prefill:  91%|█████████ | 28672/31633 [00:55<00:06, 470.52tok/s]Prefill:  97%|█████████▋| 30720/31633 [00:59<00:01, 460.93tok/s]Prefill: 100%|█████████▉| 31632/31633 [01:01<00:00, 455.89tok/s]Prefill: 100%|█████████▉| 31632/31633 [01:01<00:00, 511.59tok/s]
+INFO:     127.0.0.1:60711 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:60741 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Prefill:   0%|          | 0/27543 [00:00<?, ?tok/s]Prefill:   7%|▋         | 2048/27543 [00:03<00:43, 588.96tok/s]Prefill:  15%|█▍        | 4096/27543 [00:07<00:40, 572.25tok/s]Prefill:  22%|██▏       | 6144/27543 [00:10<00:38, 559.25tok/s]Prefill:  30%|██▉       | 8192/27543 [00:14<00:34, 553.86tok/s]Prefill:  37%|███▋      | 10240/27543 [00:18<00:31, 548.53tok/s]Prefill:  45%|████▍     | 12288/27543 [00:22<00:28, 542.68tok/s]Prefill:  52%|█████▏    | 14336/27543 [00:26<00:24, 536.90tok/s]Prefill:  59%|█████▉    | 16384/27543 [00:30<00:21, 530.16tok/s]Prefill:  67%|██████▋   | 18432/27543 [00:34<00:17, 523.14tok/s]Prefill:  74%|███████▍  | 20480/27543 [00:38<00:13, 515.66tok/s]Prefill:  82%|████████▏ | 22528/27543 [00:42<00:09, 508.09tok/s]Prefill:  89%|████████▉ | 24576/27543 [00:46<00:05, 499.07tok/s]Prefill:  97%|█████████▋| 26624/27543 [00:51<00:01, 490.28tok/s]Prefill: 100%|█████████▉| 27542/27543 [00:53<00:00, 486.73tok/s]Prefill: 100%|█████████▉| 27542/27543 [00:53<00:00, 519.43tok/s]
