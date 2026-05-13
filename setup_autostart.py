@@ -7,7 +7,6 @@ USER = getpass.getuser()
 PROJECT_DIR = "/Users/storm/Projects/qwen-mlx"
 PYTHON_PATH = f"{PROJECT_DIR}/.venv/bin/python"
 SERVER_SCRIPT = f"{PROJECT_DIR}/server.py"
-MODEL = "mlx-community/gemma-4-e4b-it-4bit"
 PLIST_NAME = "com.storm.qwen_mlx.plist"
 PLIST_PATH = f"/Users/{USER}/Library/LaunchAgents/{PLIST_NAME}"
 
@@ -29,6 +28,18 @@ if os.path.exists(CERT_FILE) and os.path.exists(KEY_FILE):
     )
     print("🔒 偵測到 SSL 憑證，將自動啟用 HTTPS 支援。")
 
+# 讀取 .env 變數
+env_vars_xml = []
+env_file = f"{PROJECT_DIR}/.env"
+if os.path.exists(env_file):
+    with open(env_file, "r") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                env_vars_xml.append(f"        <key>{k.strip()}</key>")
+                env_vars_xml.append(f"        <string>{v.strip()}</string>")
+
 # 產生 Plist 內容（逐行組合，避免多餘的換行符問題）
 lines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -41,8 +52,6 @@ lines = [
     '    <array>',
     f'        <string>{PYTHON_PATH}</string>',
     f'        <string>{SERVER_SCRIPT}</string>',
-    '        <string>--model</string>',
-    f'        <string>{MODEL}</string>',
 ]
 
 # 加入 SSL 參數（若有）
@@ -68,6 +77,7 @@ lines += [
     '        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>',
     '        <key>HF_HUB_OFFLINE</key>',
     '        <string>0</string>',
+] + env_vars_xml + [
     '    </dict>',
     '</dict>',
     '</plist>',

@@ -456,3 +456,248 @@ INFO:     127.0.0.1:60711 - "POST /v1/messages?beta=true HTTP/1.1" 200 OK
 Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
 INFO:     127.0.0.1:60741 - "POST /v1/chat/completions HTTP/1.1" 200 OK
 Prefill:   0%|          | 0/27543 [00:00<?, ?tok/s]Prefill:   7%|▋         | 2048/27543 [00:03<00:43, 588.96tok/s]Prefill:  15%|█▍        | 4096/27543 [00:07<00:40, 572.25tok/s]Prefill:  22%|██▏       | 6144/27543 [00:10<00:38, 559.25tok/s]Prefill:  30%|██▉       | 8192/27543 [00:14<00:34, 553.86tok/s]Prefill:  37%|███▋      | 10240/27543 [00:18<00:31, 548.53tok/s]Prefill:  45%|████▍     | 12288/27543 [00:22<00:28, 542.68tok/s]Prefill:  52%|█████▏    | 14336/27543 [00:26<00:24, 536.90tok/s]Prefill:  59%|█████▉    | 16384/27543 [00:30<00:21, 530.16tok/s]Prefill:  67%|██████▋   | 18432/27543 [00:34<00:17, 523.14tok/s]Prefill:  74%|███████▍  | 20480/27543 [00:38<00:13, 515.66tok/s]Prefill:  82%|████████▏ | 22528/27543 [00:42<00:09, 508.09tok/s]Prefill:  89%|████████▉ | 24576/27543 [00:46<00:05, 499.07tok/s]Prefill:  97%|█████████▋| 26624/27543 [00:51<00:01, 490.28tok/s]Prefill: 100%|█████████▉| 27542/27543 [00:53<00:00, 486.73tok/s]Prefill: 100%|█████████▉| 27542/27543 [00:53<00:00, 519.43tok/s]
+Stream finished, cleared cache.
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:65117 - "POST /v1/responses HTTP/1.1" 200 OK
+2026-05-01 21:32:21,406 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,434 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,464 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,494 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,524 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,553 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,584 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,615 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,650 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,682 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,711 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,742 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,771 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,802 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,832 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,863 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,891 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,922 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,952 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,969 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,970 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:21,971 [asyncio] WARNING: socket.send() raised exception.
+/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/pydantic/main.py:542: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `OpenAIUsage` - serialized value may not be as expected [field_name='usage', input_value={'input_tokens': 13, 'out... 24, 'total_tokens': 37}, input_type=dict])
+  return self.__pydantic_serializer__.to_json(
+2026-05-01 21:32:22,003 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:32:22,896 [asyncio] WARNING: socket.send() raised exception.
+Stream finished, cleared cache.
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65150 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65148 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65150 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65163 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65163 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65163 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65165 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65165 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65163 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65163 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65165 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65165 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65163 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65163 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65247 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65247 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65247 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65265 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65270 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65277 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65299 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65303 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:65303 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:65303 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:65303 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:65303 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:65303 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:65303 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:65303 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:65303 - "POST / HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:65337 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65337 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65337 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65337 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65337 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65350 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65350 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65350 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65350 - "POST /v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65354 - "POST /v1 HTTP/1.1" 404 Not Found
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:65359 - "POST /v1/responses HTTP/1.1" 200 OK
+2026-05-01 21:37:22,494 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,523 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,553 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,583 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,612 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,642 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,672 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,702 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,732 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,762 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,791 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,821 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,851 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,880 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,910 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,940 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:22,970 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:23,000 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:23,030 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:23,044 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:23,044 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:23,044 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:23,045 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:23,171 [asyncio] WARNING: socket.send() raised exception.
+Stream finished, cleared cache.
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:65361 - "POST /v1/responses HTTP/1.1" 200 OK
+2026-05-01 21:37:24,274 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,303 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,333 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,363 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,392 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,422 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,451 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,480 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,510 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,539 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,568 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,597 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,627 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,656 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,686 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,715 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,744 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,773 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,803 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,816 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,816 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,816 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,816 [asyncio] WARNING: socket.send() raised exception.
+2026-05-01 21:37:24,905 [asyncio] WARNING: socket.send() raised exception.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [21753]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [969]
+INFO:     Waiting for application startup.
+2026-05-09 14:39:48,873 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/gemma-4-e4b-it-4bit
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 2902.63it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [969]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [89538]
+INFO:     Waiting for application startup.
+2026-05-13 23:33:19,992 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  ⚡ 推測解碼:       mlx-community/gemma-4-E4B-it-assistant-bf16 (dflash)
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/gemma-4-e4b-it-4bit
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 15880.00it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [89538]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [89969]
+INFO:     Waiting for application startup.
+2026-05-13 23:33:43,793 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  ⚡ 推測解碼:       mlx-community/gemma-4-E4B-it-assistant-bf16 (dflash)
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Preloading model: mlx-community/gemma-4-e4b-it-4bit
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 13797.05it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
