@@ -8644,3 +8644,171 @@ Stream finished, cleared cache.
 Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
 [MTP] batch=1 tokens=250 accept=0.35 rounds=185
 INFO:     127.0.0.1:62565 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     192.168.68.115:54595 - "POST /v1/messages HTTP/1.1" 200 OK
+[MTP] batch=1 tokens=396 accept=0.42 rounds=279
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     192.168.68.115:54625 - "POST /v1/messages HTTP/1.1" 200 OK
+[MTP] batch=1 tokens=289 accept=0.44 rounds=201
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+[MTP] batch=1 tokens=250 accept=0.37 rounds=182
+INFO:     127.0.0.1:62692 - "POST /v1/messages HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+[MTP] batch=1 tokens=250 accept=0.40 rounds=179
+INFO:     127.0.0.1:62718 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for connections to close. (CTRL+C to force quit)
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [79244]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+2026-05-17 17:13:13,872 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Qwen2.5-VL-7B-Instruct-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  ⚡ 推測解碼:       mlx-community/gemma-4-E4B-it-assistant-bf16 (dflash)
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Loading model from: mlx-community/Qwen2.5-VL-7B-Instruct-4bit
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 24941.35it/s]
+2026-05-17 17:13:16,308 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-E4B-it-assistant-bf16/revision/main "HTTP/1.1 200 OK"
+Model and processor loaded successfully.
+Loading speculative drafter (dflash): mlx-community/gemma-4-E4B-it-assistant-bf16
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 13298.36it/s]
+2026-05-17 17:13:16,311 [mlx_vlm.speculative.drafters] WARNING: Drafter '/Users/storm/.cache/huggingface/hub/models--mlx-community--gemma-4-E4B-it-assistant-bf16/snapshots/844e008e06ef5562bdb89428d851d0634d119dcd' has model_type='gemma4_assistant' which requires --draft-kind='mtp'; got --draft-kind='dflash'. Overriding to 'mtp'.
+  → drafter requires --draft-kind='mtp'; using 'mtp' instead of 'dflash'.
+Drafter ready — speculative decoding enabled.
+INFO:     127.0.0.1:62755 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Traceback (most recent call last):
+  File "/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/mlx_vlm/server.py", line 733, in _run_speculative
+    hidden = _speculative_hidden_state(draft_kind, out)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/mlx_vlm/server.py", line 83, in _speculative_hidden_state
+    return outputs.hidden_states[-1]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-05-17 17:13:19,652 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+Error in speculative generation thread: 'NoneType' object is not subscriptable
+New model request, clearing existing cache...
+Unloading model: mlx-community/Qwen2.5-VL-7B-Instruct-4bit, Adapter: None
+Stopping ResponseGenerator...
+Model unloaded and cache cleared.
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 14710.40it/s]
+/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/transformers/audio_utils.py:549: UserWarning: At least one mel filter has all zero values. The value for `num_mel_filters` (128) may be set too high. Or, the value for `num_frequency_bins` (257) may be set too low.
+  warnings.warn(
+2026-05-17 17:13:27,722 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-E4B-it-assistant-bf16/revision/main "HTTP/1.1 200 OK"
+Model and processor loaded successfully.
+Loading speculative drafter (dflash): mlx-community/gemma-4-E4B-it-assistant-bf16
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 5005.14it/s]
+2026-05-17 17:13:27,729 [mlx_vlm.speculative.drafters] WARNING: Drafter '/Users/storm/.cache/huggingface/hub/models--mlx-community--gemma-4-E4B-it-assistant-bf16/snapshots/844e008e06ef5562bdb89428d851d0634d119dcd' has model_type='gemma4_assistant' which requires --draft-kind='mtp'; got --draft-kind='dflash'. Overriding to 'mtp'.
+  → drafter requires --draft-kind='mtp'; using 'mtp' instead of 'dflash'.
+Drafter ready — speculative decoding enabled.
+[MTP] batch=1 tokens=250 accept=0.44 rounds=173
+INFO:     127.0.0.1:62758 - "POST /v1/messages HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     192.168.68.115:54823 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for connections to close. (CTRL+C to force quit)
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [79834]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+2026-05-17 17:23:41,018 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  ⚡ 推測解碼:       mlx-community/gemma-4-E4B-it-assistant-bf16 (mtp)
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 9203.08it/s]
+/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/transformers/audio_utils.py:549: UserWarning: At least one mel filter has all zero values. The value for `num_mel_filters` (128) may be set too high. Or, the value for `num_frequency_bins` (257) may be set too low.
+  warnings.warn(
+2026-05-17 17:23:44,648 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-E4B-it-assistant-bf16/revision/main "HTTP/1.1 200 OK"
+Model and processor loaded successfully.
+Loading speculative drafter (mtp): mlx-community/gemma-4-E4B-it-assistant-bf16
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 35246.25it/s]
+Drafter ready — speculative decoding enabled.
+INFO:     192.168.68.115:55146 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [79834]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [79966]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+2026-05-17 17:31:06,963 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 26214.40it/s]
+/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/transformers/audio_utils.py:549: UserWarning: At least one mel filter has all zero values. The value for `num_mel_filters` (128) may be set too high. Or, the value for `num_frequency_bins` (257) may be set too low.
+  warnings.warn(
+Model and processor loaded successfully.
+INFO:     192.168.68.115:55433 - "POST /v1/messages HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     192.168.68.115:55645 - "POST /v1/messages HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     192.168.68.115:55701 - "POST /v1/messages HTTP/1.1" 200 OK
