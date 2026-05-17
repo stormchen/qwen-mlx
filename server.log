@@ -8489,3 +8489,158 @@ Stream finished, cleared cache.
 Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
 Generation finished, cleared cache.
 INFO:     127.0.0.1:62244 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [89969]
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [78707]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  ⚡ 推測解碼:       mlx-community/gemma-4-E4B-it-assistant-bf16 (dflash)
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+INFO:     127.0.0.1:62365 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62367 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62365 - "GET /v1/models HTTP/1.1" 200 OK
+2026-05-17 17:03:50,472 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 15716.36it/s]
+/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/transformers/audio_utils.py:549: UserWarning: At least one mel filter has all zero values. The value for `num_mel_filters` (128) may be set too high. Or, the value for `num_frequency_bins` (257) may be set too low.
+  warnings.warn(
+2026-05-17 17:04:04,749 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-E4B-it-assistant-bf16/revision/main "HTTP/1.1 200 OK"
+Model and processor loaded successfully.
+Loading speculative drafter (dflash): mlx-community/gemma-4-E4B-it-assistant-bf16
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]2026-05-17 17:04:05,081 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mlx-community/gemma-4-E4B-it-assistant-bf16/resolve/844e008e06ef5562bdb89428d851d0634d119dcd/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-17 17:04:05,121 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mlx-community/gemma-4-E4B-it-assistant-bf16/resolve/844e008e06ef5562bdb89428d851d0634d119dcd/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-17 17:04:05,133 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mlx-community/gemma-4-E4B-it-assistant-bf16/resolve/844e008e06ef5562bdb89428d851d0634d119dcd/model.safetensors "HTTP/1.1 302 Found"
+2026-05-17 17:04:05,137 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mlx-community/gemma-4-E4B-it-assistant-bf16/resolve/844e008e06ef5562bdb89428d851d0634d119dcd/tokenizer.json "HTTP/1.1 302 Found"
+2026-05-17 17:04:05,531 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mlx-community/gemma-4-E4B-it-assistant-bf16/844e008e06ef5562bdb89428d851d0634d119dcd/config.json "HTTP/1.1 200 OK"
+2026-05-17 17:04:05,532 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mlx-community/gemma-4-E4B-it-assistant-bf16/resolve/844e008e06ef5562bdb89428d851d0634d119dcd/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-17 17:04:05,534 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mlx-community/gemma-4-E4B-it-assistant-bf16/844e008e06ef5562bdb89428d851d0634d119dcd/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-17 17:04:05,801 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-E4B-it-assistant-bf16/xet-read-token/844e008e06ef5562bdb89428d851d0634d119dcd "HTTP/1.1 200 OK"
+2026-05-17 17:04:05,801 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/mlx-community/gemma-4-E4B-it-assistant-bf16/844e008e06ef5562bdb89428d851d0634d119dcd/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-17 17:04:05,801 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-E4B-it-assistant-bf16/xet-read-token/844e008e06ef5562bdb89428d851d0634d119dcd "HTTP/1.1 200 OK"
+2026-05-17 17:04:05,802 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/mlx-community/gemma-4-E4B-it-assistant-bf16/844e008e06ef5562bdb89428d851d0634d119dcd/config.json "HTTP/1.1 200 OK"
+Fetching 5 files:  20%|██        | 1/5 [00:00<00:03,  1.08it/s]2026-05-17 17:04:05,818 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mlx-community/gemma-4-E4B-it-assistant-bf16/844e008e06ef5562bdb89428d851d0634d119dcd/generation_config.json "HTTP/1.1 200 OK"
+2026-05-17 17:04:06,035 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/mlx-community/gemma-4-E4B-it-assistant-bf16/844e008e06ef5562bdb89428d851d0634d119dcd/generation_config.json "HTTP/1.1 200 OK"
+Fetching 5 files:  40%|████      | 2/5 [00:01<00:01,  1.94it/s]Fetching 5 files:  60%|██████    | 3/5 [00:06<00:05,  2.74s/it]Fetching 5 files: 100%|██████████| 5/5 [00:06<00:00,  1.31s/it]
+2026-05-17 17:04:11,432 [mlx_vlm.speculative.drafters] WARNING: Drafter '/Users/storm/.cache/huggingface/hub/models--mlx-community--gemma-4-E4B-it-assistant-bf16/snapshots/844e008e06ef5562bdb89428d851d0634d119dcd' has model_type='gemma4_assistant' which requires --draft-kind='mtp'; got --draft-kind='dflash'. Overriding to 'mtp'.
+libc++abi: terminating due to uncaught exception of type std::runtime_error: [METAL] Command buffer execution failed: Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)
+/Users/storm/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+INFO:     Started server process [78834]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [78834]
+INFO:     Started server process [78908]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+============================================================
+  MLX-VLM OpenAI 相容 API 服務設定
+============================================================
+  🌐 主機位址:       0.0.0.0:8080
+  🤖 模型:           mlx-community/gemma-4-e4b-it-4bit
+  ⚡ 推測解碼:       mlx-community/gemma-4-E4B-it-assistant-bf16 (dflash)
+  📸 Vision Cache:   20 個
+  📝 日誌等級:       INFO
+============================================================
+
+  API 端點:
+    POST  http://0.0.0.0:8080/v1/chat/completions
+    POST  http://0.0.0.0:8080/v1/responses
+    GET   http://0.0.0.0:8080/v1/models
+    GET   http://0.0.0.0:8080/health
+
+  OpenAI SDK 連線方式:
+    client = OpenAI(base_url="http://0.0.0.0:8080/v1", api_key="mlx-vlm")
+============================================================
+
+🚀 啟動伺服器 http://0.0.0.0:8080
+📖 API 文件: http://0.0.0.0:8080/docs
+
+INFO:     127.0.0.1:62513 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62515 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62513 - "GET /v1/models HTTP/1.1" 200 OK
+2026-05-17 17:06:33,648 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Qwen2.5-VL-7B-Instruct-4bit/revision/main "HTTP/1.1 200 OK"
+Loading model from: mlx-community/Qwen2.5-VL-7B-Instruct-4bit
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 32513.98it/s]
+2026-05-17 17:06:47,365 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-E4B-it-assistant-bf16/revision/main "HTTP/1.1 200 OK"
+Model and processor loaded successfully.
+Loading speculative drafter (dflash): mlx-community/gemma-4-E4B-it-assistant-bf16
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 12625.84it/s]
+2026-05-17 17:06:47,390 [mlx_vlm.speculative.drafters] WARNING: Drafter '/Users/storm/.cache/huggingface/hub/models--mlx-community--gemma-4-E4B-it-assistant-bf16/snapshots/844e008e06ef5562bdb89428d851d0634d119dcd' has model_type='gemma4_assistant' which requires --draft-kind='mtp'; got --draft-kind='dflash'. Overriding to 'mtp'.
+Traceback (most recent call last):
+  File "/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/mlx_vlm/server.py", line 733, in _run_speculative
+    hidden = _speculative_hidden_state(draft_kind, out)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/mlx_vlm/server.py", line 83, in _speculative_hidden_state
+    return outputs.hidden_states[-1]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+TypeError: 'NoneType' object is not subscriptable
+  → drafter requires --draft-kind='mtp'; using 'mtp' instead of 'dflash'.
+Drafter ready — speculative decoding enabled.
+Error in speculative generation thread: 'NoneType' object is not subscriptable
+INFO:     127.0.0.1:62524 - "GET /v1/models HTTP/1.1" 200 OK
+2026-05-17 17:06:58,814 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-e4b-it-4bit/revision/main "HTTP/1.1 200 OK"
+New model request, clearing existing cache...
+Unloading model: mlx-community/Qwen2.5-VL-7B-Instruct-4bit, Adapter: None
+Stopping ResponseGenerator...
+Model unloaded and cache cleared.
+Loading model from: mlx-community/gemma-4-e4b-it-4bit
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 12676.40it/s]
+/Users/storm/Projects/qwen-mlx/.venv/lib/python3.11/site-packages/transformers/audio_utils.py:549: UserWarning: At least one mel filter has all zero values. The value for `num_mel_filters` (128) may be set too high. Or, the value for `num_frequency_bins` (257) may be set too low.
+  warnings.warn(
+2026-05-17 17:07:06,393 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/gemma-4-E4B-it-assistant-bf16/revision/main "HTTP/1.1 200 OK"
+Model and processor loaded successfully.
+Loading speculative drafter (dflash): mlx-community/gemma-4-E4B-it-assistant-bf16
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 17985.87it/s]
+2026-05-17 17:07:06,397 [mlx_vlm.speculative.drafters] WARNING: Drafter '/Users/storm/.cache/huggingface/hub/models--mlx-community--gemma-4-E4B-it-assistant-bf16/snapshots/844e008e06ef5562bdb89428d851d0634d119dcd' has model_type='gemma4_assistant' which requires --draft-kind='mtp'; got --draft-kind='dflash'. Overriding to 'mtp'.
+  → drafter requires --draft-kind='mtp'; using 'mtp' instead of 'dflash'.
+Drafter ready — speculative decoding enabled.
+[MTP] batch=1 tokens=29 accept=0.58 rounds=19
+INFO:     127.0.0.1:62524 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:62524 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[MTP] batch=1 tokens=18 accept=0.42 rounds=12
+Stream finished, cleared cache.
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+[MTP] batch=1 tokens=200 accept=0.53 rounds=130
+INFO:     127.0.0.1:62534 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+[MTP] batch=1 tokens=200 accept=0.32 rounds=151
+INFO:     127.0.0.1:62550 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+INFO:     127.0.0.1:62559 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[MTP] batch=1 tokens=150 accept=0.34 rounds=112
+Stream finished, cleared cache.
+Using cached model: mlx-community/gemma-4-e4b-it-4bit, Adapter: None
+[MTP] batch=1 tokens=250 accept=0.35 rounds=185
+INFO:     127.0.0.1:62565 - "POST /v1/chat/completions HTTP/1.1" 200 OK
