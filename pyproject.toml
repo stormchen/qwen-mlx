@@ -5,7 +5,7 @@ description = "在 Mac 上透過 OpenAI 相容 API 使用 MLX 視覺語言模型
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "mlx-vlm>=0.4.4",
+    "mlx-vlm>=0.5.0",
     "torch>=2.11.0",
     "torchvision>=0.26.0",
     "uvicorn>=0.34.0",

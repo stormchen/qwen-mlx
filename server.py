@@ -96,7 +96,8 @@ def main():
         from fastapi import Request
         from fastapi.responses import StreamingResponse as FastAPIStreamingResponse
         from mlx_vlm.server import get_cached_model, stream_generate, generate
-        import time, uuid, json as _json
+        import mlx_vlm.server as _srv
+        import asyncio, time, uuid, json as _json
 
         @app.post("/v1/messages", include_in_schema=False)
         async def anthropic_messages(request: Request):
@@ -139,6 +140,12 @@ def main():
             msg_id = f"msg_{uuid.uuid4().hex[:24]}"
             created = int(time.time())
 
+            gen_args = _srv.GenerationArguments(
+                max_tokens=max_tokens,
+                temperature=body.get("temperature", 0.7),
+                top_p=body.get("top_p", 1.0),
+            )
+
             if stream:
                 # 串流回應（SSE 格式）
                 async def event_stream():
@@ -146,20 +153,70 @@ def main():
                     yield f"data: {_json.dumps({'type':'content_block_start','index':0,'content_block':{'type':'text','text':''}})}\n\n"
 
                     full_text = ""
-                    for token in stream_generate(model, processor, prompt, image=None, max_tokens=max_tokens):
-                        t = token.text if hasattr(token, "text") else str(token)
-                        full_text += t
-                        yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':t}})}\n\n"
+                    output_tokens = 0
+
+                    if _srv.response_generator is not None:
+                        ctx, token_iter = await asyncio.to_thread(
+                            _srv.response_generator.generate,
+                            prompt,
+                            None,  # images
+                            None,  # audio
+                            gen_args,
+                        )
+
+                        def _next_token():
+                            try:
+                                return next(token_iter)
+                            except StopIteration:
+                                return None
+
+                        while True:
+                            token = await asyncio.to_thread(_next_token)
+                            if token is None:
+                                break
+                            output_tokens += 1
+                            t = token.text if hasattr(token, "text") else str(token)
+                            full_text += t
+                            yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':t}})}\n\n"
+                            await asyncio.sleep(0.001)
+                            if hasattr(token, "finish_reason") and token.finish_reason:
+                                break
+                    else:
+                        # Fallback to stream_generate
+                        for token in stream_generate(model, processor, prompt, image=None, max_tokens=max_tokens):
+                            output_tokens += 1
+                            t = token.text if hasattr(token, "text") else str(token)
+                            full_text += t
+                            yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':t}})}\n\n"
+                            await asyncio.sleep(0.001)
 
                     yield f"data: {_json.dumps({'type':'content_block_stop','index':0})}\n\n"
-                    yield f"data: {_json.dumps({'type':'message_delta','delta':{'stop_reason':'end_turn','stop_sequence':None},'usage':{'output_tokens':len(full_text.split())}})}\n\n"
+                    yield f"data: {_json.dumps({'type':'message_delta','delta':{'stop_reason':'end_turn','stop_sequence':None},'usage':{'output_tokens':output_tokens}})}\n\n"
                     yield f"data: {_json.dumps({'type':'message_stop'})}\n\n"
 
                 return FastAPIStreamingResponse(event_stream(), media_type="text/event-stream")
             else:
                 # 非串流回應
-                response = generate(model, processor, prompt, image=None, max_tokens=max_tokens)
-                text = response.text if hasattr(response, "text") else str(response)
+                if _srv.response_generator is not None:
+                    ctx, token_iter = await asyncio.to_thread(
+                        _srv.response_generator.generate,
+                        prompt,
+                        None,  # images
+                        None,  # audio
+                        gen_args,
+                    )
+                    def _consume():
+                        res = []
+                        for tk in token_iter:
+                            res.append(tk.text if hasattr(tk, "text") else str(tk))
+                            if hasattr(tk, "finish_reason") and tk.finish_reason:
+                                break
+                        return "".join(res)
+                    text = await asyncio.to_thread(_consume)
+                else:
+                    response = generate(model, processor, prompt, image=None, max_tokens=max_tokens)
+                    text = response.text if hasattr(response, "text") else str(response)
+
                 return JSONResponse({
                     "id": msg_id,
                     "type": "message",
