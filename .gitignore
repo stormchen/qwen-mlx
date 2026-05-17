@@ -6,5 +6,10 @@ dist/
 wheels/
 *.egg-info
 
+# Logs
+server.log
+*.log
+
 # Virtual environments
 .venv
+server.log
