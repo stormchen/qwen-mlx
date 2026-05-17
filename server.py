@@ -178,7 +178,6 @@ def main():
                             t = token.text if hasattr(token, "text") else str(token)
                             full_text += t
                             yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':t}})}\n\n"
-                            await asyncio.sleep(0.001)
                             if hasattr(token, "finish_reason") and token.finish_reason:
                                 break
                     else:
@@ -188,7 +187,6 @@ def main():
                             t = token.text if hasattr(token, "text") else str(token)
                             full_text += t
                             yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':t}})}\n\n"
-                            await asyncio.sleep(0.001)
 
                     yield f"data: {_json.dumps({'type':'content_block_stop','index':0})}\n\n"
                     yield f"data: {_json.dumps({'type':'message_delta','delta':{'stop_reason':'end_turn','stop_sequence':None},'usage':{'output_tokens':output_tokens}})}\n\n"
@@ -196,7 +194,7 @@ def main():
 
                 return FastAPIStreamingResponse(event_stream(), media_type="text/event-stream")
             else:
-                # 非串流回應
+                output_tokens = 0
                 if _srv.response_generator is not None:
                     ctx, token_iter = await asyncio.to_thread(
                         _srv.response_generator.generate,
@@ -207,15 +205,18 @@ def main():
                     )
                     def _consume():
                         res = []
+                        count = 0
                         for tk in token_iter:
+                            count += 1
                             res.append(tk.text if hasattr(tk, "text") else str(tk))
                             if hasattr(tk, "finish_reason") and tk.finish_reason:
                                 break
-                        return "".join(res)
-                    text = await asyncio.to_thread(_consume)
+                        return "".join(res), count
+                    text, output_tokens = await asyncio.to_thread(_consume)
                 else:
                     response = generate(model, processor, prompt, image=None, max_tokens=max_tokens)
                     text = response.text if hasattr(response, "text") else str(response)
+                    output_tokens = len(text)
 
                 return JSONResponse({
                     "id": msg_id,
@@ -227,7 +228,7 @@ def main():
                     "stop_sequence": None,
                     "usage": {
                         "input_tokens": 0,
-                        "output_tokens": len(text.split()),
+                        "output_tokens": output_tokens,
                     }
                 })
         # ── Anthropic 相容層結束 ────────────────────────────────────────
