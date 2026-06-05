@@ -15,3 +15,6 @@ dependencies = [
 
 [project.scripts]
 qwen-mlx-server = "server:main"
+
+[tool.uv.sources]
+mlx-vlm = { git = "https://github.com/Blaizzy/mlx-vlm.git" }

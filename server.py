@@ -13,8 +13,78 @@ import logging
 import os
 import sys
 
+import re
+import json as _json
+
 from config import ServerConfig
 
+
+# ── Gemma 4 思考思維鏈清洗與串流過濾器 ──────────────────────────
+THOUGHT_PATTERN = re.compile(r"<\|channel>thought\n.*?<channel\|>", re.DOTALL)
+
+def clean_thought_tags(content: str) -> str:
+    """清洗文本中所有思維鏈標籤及其內容（若為空或有殘留）"""
+    if not content:
+        return content
+    return THOUGHT_PATTERN.sub("", content)
+
+class Gemma4StreamFilter:
+    """針對 Gemma 4 串流輸出設計的過濾狀態機，自動隱藏空的思維鏈標記"""
+    def __init__(self):
+        self.buffer = ""
+        self.is_collecting_thought = False
+        self.thought_tag_start = "<|channel>thought\n"
+        self.thought_tag_end = "<channel|>"
+
+    def filter_chunk(self, text: str) -> str:
+        self.buffer += text
+        
+        if not self.is_collecting_thought:
+            # 檢查 buffer 中是否包含完整的開始標籤
+            if self.thought_tag_start in self.buffer:
+                self.is_collecting_thought = True
+                idx = self.buffer.find(self.thought_tag_start)
+                pre_text = self.buffer[:idx]
+                # 只保留開始標籤之後的內容在 buffer 中
+                self.buffer = self.buffer[idx + len(self.thought_tag_start):]
+                return pre_text
+            else:
+                # 處理部分匹配情況，防止 token 碎裂導致標籤洩露
+                max_prefix_len = 0
+                for i in range(1, len(self.thought_tag_start)):
+                    if self.thought_tag_start.startswith(self.buffer[-i:]):
+                        max_prefix_len = i
+                        break
+                if max_prefix_len > 0:
+                    safe_text = self.buffer[:-max_prefix_len]
+                    self.buffer = self.buffer[-max_prefix_len:]
+                    return safe_text
+                else:
+                    safe_text = self.buffer
+                    self.buffer = ""
+                    return safe_text
+        else:
+            # 正在收集思考段落，檢查是否結束
+            if self.thought_tag_end in self.buffer:
+                self.is_collecting_thought = False
+                idx = self.buffer.find(self.thought_tag_end)
+                # 思考段落結束，將其完全過濾丟棄，只釋放結束標籤後的答案
+                post_text = self.buffer[idx + len(self.thought_tag_end):]
+                self.buffer = ""
+                return post_text
+            else:
+                # 未結束，持續緩衝不輸出
+                return ""
+
+    def flush(self) -> str:
+        """在串流結束時，釋放狀態機中剩餘的安全緩衝內容"""
+        if not self.is_collecting_thought:
+            res = self.buffer
+            self.buffer = ""
+            return res
+        else:
+            self.buffer = ""
+            return ""
 
 def parse_args():
     """解析命令列參數。"""
@@ -34,6 +104,7 @@ def parse_args():
     p.add_argument("--vision-cache-size", type=int, default=None)
     p.add_argument("--log-level", type=str, default=None)
     p.add_argument("--top-logprobs-k", type=int, default=None)
+    p.add_argument("--max-soft-tokens", type=int, default=None)
     p.add_argument("--ssl-certfile", type=str, default=None)
     p.add_argument("--ssl-keyfile", type=str, default=None)
     return p.parse_args()
@@ -46,7 +117,7 @@ def build_config(args):
         "host", "port", "model", "adapter_path", "trust_remote_code",
         "kv_bits", "kv_quant_scheme", "kv_group_size", "max_kv_size",
         "draft_model", "draft_kind", "draft_block_size",
-        "vision_cache_size", "log_level", "top_logprobs_k",
+        "vision_cache_size", "max_soft_tokens", "log_level", "top_logprobs_k",
         "ssl_certfile", "ssl_keyfile",
     ]:
         val = getattr(args, attr.replace("-", "_"), None)
@@ -78,7 +149,103 @@ def main():
         from mlx_vlm.server import app
         from mlx_vlm.version import __version__
         from fastapi.responses import JSONResponse
+        from fastapi import Request
+        from fastapi.responses import StreamingResponse as FastAPIStreamingResponse
         import uvicorn
+
+        # ── Monkey Patch mlx_vlm.server.get_cached_model ────────────────
+        import mlx_vlm.server as _srv
+        orig_get_cached_model = _srv.get_cached_model
+
+        def patched_get_cached_model(model_path, *args, **kwargs):
+            model, processor, model_config = orig_get_cached_model(model_path, *args, **kwargs)
+            # 動態套用視覺預算設定到 processor
+            if cfg.max_soft_tokens:
+                if hasattr(processor, "image_processor") and hasattr(processor.image_processor, "max_soft_tokens"):
+                    processor.image_processor.max_soft_tokens = cfg.max_soft_tokens
+                if hasattr(processor, "image_seq_length"):
+                    processor.image_seq_length = cfg.max_soft_tokens
+            return model, processor, model_config
+
+        _srv.get_cached_model = patched_get_cached_model
+
+        # ── Monkey Patch mlx_vlm.prompt_utils.apply_chat_template ─────────
+        import mlx_vlm.prompt_utils as _prompt_utils
+        orig_apply_chat_template = _prompt_utils.apply_chat_template
+
+        def patched_apply_chat_template(processor, model_config, messages, *args, **kwargs):
+            cleaned_messages = []
+            for msg in messages:
+                new_msg = dict(msg)
+                if "content" in new_msg:
+                    content = new_msg["content"]
+                    if isinstance(content, str):
+                        new_msg["content"] = clean_thought_tags(content)
+                    elif isinstance(content, list):
+                        new_content = []
+                        for item in content:
+                            if isinstance(item, dict) and item.get("type") == "text":
+                                new_item = dict(item)
+                                new_item["text"] = clean_thought_tags(item.get("text", ""))
+                                new_content.append(new_item)
+                            else:
+                                new_content.append(item)
+                        new_msg["content"] = new_content
+                cleaned_messages.append(new_msg)
+            
+            logging.info(f"🧹 [apply_chat_template Patch] 已清洗 {len(cleaned_messages)} 條對話歷史中的思維鏈標籤。")
+            return orig_apply_chat_template(processor, model_config, cleaned_messages, *args, **kwargs)
+
+        _prompt_utils.apply_chat_template = patched_apply_chat_template
+
+        # ── Monkey Patch stream_generate 與 generate ────────────────────
+        import mlx_vlm.server.openai as _srv_openai
+        orig_stream_generate = _srv.stream_generate
+        orig_generate = _srv.generate
+
+        def create_patched_stream_generate(orig_func):
+            def patched_stream_generate(*args, **kwargs):
+                stream_filter = Gemma4StreamFilter()
+                last_token_class = None
+                for token in orig_func(*args, **kwargs):
+                    if hasattr(token, "text"):
+                        last_token_class = token.__class__
+                        orig_t = token.text
+                        filtered_t = stream_filter.filter_chunk(orig_t)
+                        token.text = filtered_t
+                        yield token
+                    else:
+                        orig_t = str(token)
+                        filtered_t = stream_filter.filter_chunk(orig_t)
+                        yield filtered_t
+                
+                rest = stream_filter.flush()
+                if rest:
+                    if last_token_class is not None:
+                        try:
+                            class MockToken:
+                                def __init__(self, text):
+                                    self.text = text
+                            yield MockToken(rest)
+                        except Exception:
+                            yield rest
+                    else:
+                        yield rest
+            return patched_stream_generate
+
+        _srv.stream_generate = create_patched_stream_generate(_srv.stream_generate)
+        _srv_openai.stream_generate = create_patched_stream_generate(_srv_openai.stream_generate)
+
+        def patched_generate(*args, **kwargs):
+            res = orig_generate(*args, **kwargs)
+            if hasattr(res, "text") and res.text:
+                res.text = clean_thought_tags(res.text)
+            elif isinstance(res, str):
+                res = clean_thought_tags(res)
+            return res
+
+        _srv.generate = patched_generate
+        _srv_openai.generate = patched_generate
 
         # 注入根路由，讓 Claude Desktop 等工具的健康檢查能正常通過
         @app.get("/", include_in_schema=False)
@@ -154,39 +321,50 @@ def main():
 
                     full_text = ""
                     output_tokens = 0
+                    stream_filter = Gemma4StreamFilter()
 
                     if _srv.response_generator is not None:
-                        ctx, token_iter = await asyncio.to_thread(
-                            _srv.response_generator.generate,
-                            prompt,
-                            None,  # images
-                            None,  # audio
-                            gen_args,
-                        )
+                         ctx, token_iter = await asyncio.to_thread(
+                             _srv.response_generator.generate,
+                             prompt,
+                             None,  # images
+                             None,  # audio
+                             gen_args,
+                         )
 
-                        def _next_token():
-                            try:
-                                return next(token_iter)
-                            except StopIteration:
-                                return None
+                         def _next_token():
+                             try:
+                                 return next(token_iter)
+                             except StopIteration:
+                                 return None
 
-                        while True:
-                            token = await asyncio.to_thread(_next_token)
-                            if token is None:
-                                break
-                            output_tokens += 1
-                            t = token.text if hasattr(token, "text") else str(token)
-                            full_text += t
-                            yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':t}})}\n\n"
-                            if hasattr(token, "finish_reason") and token.finish_reason:
-                                break
+                         while True:
+                             token = await asyncio.to_thread(_next_token)
+                             if token is None:
+                                 break
+                             output_tokens += 1
+                             t = token.text if hasattr(token, "text") else str(token)
+                             filtered_t = stream_filter.filter_chunk(t)
+                             if filtered_t:
+                                 full_text += filtered_t
+                                 yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':filtered_t}})}\n\n"
+                             if hasattr(token, "finish_reason") and token.finish_reason:
+                                 break
                     else:
-                        # Fallback to stream_generate
-                        for token in stream_generate(model, processor, prompt, image=None, max_tokens=max_tokens):
-                            output_tokens += 1
-                            t = token.text if hasattr(token, "text") else str(token)
-                            full_text += t
-                            yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':t}})}\n\n"
+                         # Fallback to stream_generate
+                         for token in stream_generate(model, processor, prompt, image=None, max_tokens=max_tokens):
+                             output_tokens += 1
+                             t = token.text if hasattr(token, "text") else str(token)
+                             filtered_t = stream_filter.filter_chunk(t)
+                             if filtered_t:
+                                 full_text += filtered_t
+                                 yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':filtered_t}})}\n\n"
+
+                    # 釋放狀態機剩餘緩衝
+                    rest = stream_filter.flush()
+                    if rest:
+                        full_text += rest
+                        yield f"data: {_json.dumps({'type':'content_block_delta','index':0,'delta':{'type':'text_delta','text':rest}})}\n\n"
 
                     yield f"data: {_json.dumps({'type':'content_block_stop','index':0})}\n\n"
                     yield f"data: {_json.dumps({'type':'message_delta','delta':{'stop_reason':'end_turn','stop_sequence':None},'usage':{'output_tokens':output_tokens}})}\n\n"
@@ -217,6 +395,9 @@ def main():
                     response = generate(model, processor, prompt, image=None, max_tokens=max_tokens)
                     text = response.text if hasattr(response, "text") else str(response)
                     output_tokens = len(text)
+
+                # 清洗非串流輸出的思維鏈標記
+                text = clean_thought_tags(text)
 
                 return JSONResponse({
                     "id": msg_id,

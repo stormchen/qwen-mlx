@@ -52,6 +52,7 @@ class ServerConfig:
 
     # === Vision Feature Cache ===
     vision_cache_size: int = 20
+    max_soft_tokens: Optional[int] = 280
 
     # === 日誌等級 ===
     log_level: str = "INFO"
@@ -99,6 +100,7 @@ class ServerConfig:
             draft_kind=_env("DRAFT_KIND", cls.draft_kind),
             draft_block_size=_env_int("DRAFT_BLOCK_SIZE"),
             vision_cache_size=_env_int("VISION_CACHE_SIZE", cls.vision_cache_size),
+            max_soft_tokens=_env_int("MAX_SOFT_TOKENS", cls.max_soft_tokens),
             log_level=_env("LOG_LEVEL", cls.log_level),
             top_logprobs_k=_env_int("TOP_LOGPROBS_K", cls.top_logprobs_k),
         )
@@ -126,6 +128,8 @@ class ServerConfig:
                 env["MLX_VLM_DRAFT_BLOCK_SIZE"] = str(self.draft_block_size)
 
         env["MLX_VLM_VISION_CACHE_SIZE"] = str(self.vision_cache_size)
+        if self.max_soft_tokens is not None:
+            env["MLX_VLM_MAX_SOFT_TOKENS"] = str(self.max_soft_tokens)
         env["TOP_LOGPROBS_K"] = str(self.top_logprobs_k)
 
         return env
@@ -144,6 +148,8 @@ class ServerConfig:
         if self.kv_bits:
             print(f"  💾 KV Cache 量化:  {self.kv_bits} bits ({self.kv_quant_scheme})")
         print(f"  📸 Vision Cache:   {self.vision_cache_size} 個")
+        if self.max_soft_tokens:
+            print(f"  👁️  視覺 Token 預算: {self.max_soft_tokens} 個")
         print(f"  📝 日誌等級:       {self.log_level}")
         if self.trust_remote_code:
             print(f"  ⚠️  信任遠端程式碼: 是")

@@ -10,7 +10,9 @@
 - 🔌 **雙格式 API 相容** — 同時支援 OpenAI 與 Anthropic API 格式
 - 🖼️ **多模態支援** — 文字、圖像輸入
 - ⚡ **Continuous Batching** — 自動批次處理多個並行請求
-- 🧠 **推測解碼（DFlash）** — 2-3x 加速生成
+- 🧠 **推測解碼（DFlash/MTP）** — 2-3x 加速生成，支援 Gemma 4 12B 等模型
+- 🧹 **Gemma 4 最佳實踐** — 自動清洗多輪對話歷史思維鏈（Thought）標籤，並於串流中過濾隱藏空思維標籤
+- 👁️ **視覺 Token 預算** — 支援動態調整最大視覺軟 token 數以優化 OCR 與推論效能
 - 💾 **KV Cache 量化** — TurboQuant / Uniform 減少記憶體使用（M4 優化預設 4-bit）
 - 📸 **Vision Feature Cache** — 多輪對話中自動快取圖像特徵
 - 🔧 **工具呼叫（Function Calling）** — 支援 OpenAI 格式的工具呼叫
@@ -219,6 +221,7 @@ tail -f server.log
 | `--draft-model` | DFlash drafter 路徑 | - |
 | `--vision-cache-size` | Vision Cache 大小 | `20` |
 | `--log-level` | 日誌等級 | `INFO` |
+| `--max-soft-tokens` | 視覺 Token 預算上限 | `280` |
 | `--ssl-certfile` | SSL 憑證路徑 | - |
 | `--ssl-keyfile` | SSL 私鑰路徑 | - |
 
